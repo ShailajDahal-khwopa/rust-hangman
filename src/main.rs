@@ -10,14 +10,9 @@ struct PlayerRoot {
     guess: String,
     correct_guesses: Vec<char>,
 }
-struct PlayerGuesser {
-    guess: char,
-    tries: i8,
-}
 impl PlayerRoot {
     fn new(
         word: &str,
-        no_of_guesses: i8,
         available_alphabets: Vec<char>,
         list_of_words_to_guess_from: Vec<String>,
         output_string: Vec<char>,
@@ -27,7 +22,7 @@ impl PlayerRoot {
     ) -> PlayerRoot {
         PlayerRoot {
             word: String::from(word),
-            no_of_guesses,
+            no_of_guesses: 0,
             available_alphabets,
             list_of_words_to_guess_from,
             output_string,
@@ -69,7 +64,6 @@ fn main() {
 
     let mut player_one = PlayerRoot::new(
         &random_word,
-        0,
         letters,
         list_of_words,
         output_string_vec,
